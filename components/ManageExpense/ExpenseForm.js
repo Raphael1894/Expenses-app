@@ -5,11 +5,11 @@ import Button from "../ui/Button";
 import { GlobalStyles } from "../../constants/styles";
 import Input from "./Input";
 
-function ExpenseForm({ submitButtonLabel, onCancel, onSubmit }) {
+function ExpenseForm({ submitButtonLabel, onCancel, onSubmit, defaultValues }) {
   const [inputValues, setInputValues] = useState({
-    amount: "",
-    date: "",
-    description: "",
+    amount: defaultValues ? defaultValues.amount.toString() : "",
+    date: defaultValues ? defaultValues.date.toISOString().slice(0, 10) : "",
+    description: defaultValues ? defaultValues.description : "",
   });
 
   function valuesChangeHandler(inputIdentifier, enteredTValue) {
